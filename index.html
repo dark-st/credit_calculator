@@ -19,9 +19,9 @@
 
                 <fieldset>
                     <legend>Введіть дані для розрахунку</legend>
-                    <b>Відсоткова ставка є фіксованою та становить 2.2% на день</b>
+                    <b>Відсоткова ставка є фіксованою та становить 2.2% на день.</b>
 
-                    <div class="form-group">
+                    <div class="form-group form-group--sm">
 
                         <label for="credit-input">Сума кредиту</label>
                         <input id="credit-input" type="number" min="1000" max="50000" value="5000">
@@ -31,7 +31,7 @@
 
                     <div class="form-group">
 
-                        <label for="period-input">Період погашення (днів)</label>
+                        <label for="period-input">Період погашення</label>
                         <input id="period-input" type="number" min="7" max="60" value="10">
                         <input id="period-slider" type="range" min="7" max="60" step="1" value="10">
                         <span class="alert-msg"></span>
@@ -47,9 +47,11 @@
         </div>
 
         <div class="result-section">
-            <h2 class="result-section__header">Результати</h2>
+            <h2>Результати</h2>
 
-            <p id="calc-res"></p>
+            <p class="calc-res"></p>
+            <p class="calc-res"></p>
+
         </div>
 
     </div>

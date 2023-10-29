@@ -3,14 +3,13 @@ const periodSlider = document.getElementById('period-slider');
 const creditInput = document.getElementById('credit-input');
 const creditSlider = document.getElementById('credit-slider');
 const alertMsg = document.getElementsByClassName('alert-msg');
-const calcRes = document.getElementById('calc-res');
+const calcRes = document.getElementsByClassName('calc-res');
 const btn = document.getElementsByClassName('btn')[0];
 const ir = 2.2;
 
 const creditAlert =
   'Сума кредиту повинна бути в діапазоні від 1000 до 50000 грн';
-const periodAlert =
-  'Період погашення повинен бути в діапазоні від 10 до 60 днів';
+const periodAlert = 'Період повинен бути в діапазоні від 10 до 60 днів';
 
 // Крінж-код, треба якось фіксити на нормальний
 creditInput.oninput = function () {
@@ -35,7 +34,7 @@ periodSlider.oninput = function () {
 
 const calcDaily = (la, rp) => {
   let dr = (la + la * (ir / 100) * rp) / rp;
-  calcRes.innerHTML = `DR: ${dr.toFixed(2)} `;
+  calcRes[0].innerHTML = `Денна сума погашень (DR): ${dr.toFixed(2)} `;
   return dr;
 };
 
@@ -55,7 +54,7 @@ const isValid = () => {
     isCreditValid = false;
   }
 
-  if (periodInput.value >= 10 && periodInput.value <= 60) {
+  if (periodInput.value >= 7 && periodInput.value <= 60) {
     alertMsg[1].innerHTML = null;
     isPeriodValid = true;
   } else {
@@ -69,11 +68,16 @@ const isValid = () => {
 const writeRes = () => {
   if (!isValid()) {
     btn.disabled = true;
-    calcRes.innerHTML = 'Введіть допустимі значення для отримання результатів';
+    btn.classList.add('inactive');
+    calcRes[0].innerHTML =
+      'Введіть допустимі значення для отримання результатів';
+    calcRes[1].innerHTML = null;
     return;
   } else {
     btn.disabled = false;
+    btn.classList.remove('inactive');
     let tr = calcFull(+creditInput.value, +periodInput.value);
-    calcRes.innerHTML = calcRes.innerHTML + `TR: ${tr.toFixed(2)}`;
+    calcRes.innerHTML =
+      calcRes[1].innerHTML = `Сума повного погашення (TR): ${tr.toFixed(2)}`;
   }
 };
