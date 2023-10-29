@@ -6,13 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
 
-
-    <title>Document</title>
+    <title>Credit Calculator</title>
 </head>
 
 <body>
+    <div class="container">
+        <h1 class="header">Кредитний калькулятор</h1>
 
+        <div class="calc-section">
+            <form action="#" class="form">
 
+                <fieldset>
+                    <legend>Введіть дані для розрахунку</legend>
+                    <b>Відсоткова ставка є фіксованою та становить 2.2% на день</b>
+
+                    <div class="form-group">
+
+                        <label for="credit-input">Сума кредиту</label>
+                        <input id="credit-input" type="number" min="1000" max="50000" value="5000">
+                        <input id="credit-slider" type="range" min="1000" max="50000" step="100" value="5000">
+                        <span class="alert-msg"></span>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="period-input">Період погашення (днів)</label>
+                        <input id="period-input" type="number" min="7" max="60" value="10">
+                        <input id="period-slider" type="range" min="7" max="60" step="1" value="10">
+                        <span class="alert-msg"></span>
+
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn" onclick="writeRes()">Отримати кредит</button>
+                    </div>
+                </fieldset>
+
+            </form>
+        </div>
+
+        <div class="result-section">
+            <h2 class="result-section__header">Результати</h2>
+
+            <p id="calc-res"></p>
+        </div>
+
+    </div>
 
     <script src="assets/js/main.js"></script>
 </body>
